@@ -148,5 +148,5 @@ app.delete('/products/:id', (req, res) => {
 
 // تشغيل الخادم على البورت 3000
 app.listen(3000, () => {
-  console.log('Server is running on http://192.168.194.12:3000');
+  console.log('Server is running on http://192.168.148.12:3000');
 });

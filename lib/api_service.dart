@@ -3,9 +3,9 @@ import 'package:http/http.dart' as http;
 import 'product.dart';
 
 class ApiService {
-  final String baseUrl = 'http://192.168.194.12:3000/products';
+  final String baseUrl = 'http://192.168.148.12:3000/products';
 
-
+  // جلب المنتجات من الـ API
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(Uri.parse(baseUrl));
     if (response.statusCode == 200) {
@@ -16,6 +16,7 @@ class ApiService {
     }
   }
 
+  // إضافة منتج جديد
   Future<void> addProduct(Product product) async {
     final response = await http.post(
       Uri.parse(baseUrl),
@@ -27,6 +28,7 @@ class ApiService {
     }
   }
 
+  // تحديث منتج
   Future<void> updateProduct(Product product) async {
     final response = await http.put(
       Uri.parse('$baseUrl/${product.id}'),
@@ -38,6 +40,7 @@ class ApiService {
     }
   }
 
+  // حذف منتج
   Future<void> deleteProduct(int id) async {
     final response = await http.delete(Uri.parse('$baseUrl/$id'));
     if (response.statusCode != 200) {

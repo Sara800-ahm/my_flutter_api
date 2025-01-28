@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'product_form.dart';
 import 'package:get/get.dart';
 import 'product_controller.dart';
 import 'product.dart';
@@ -73,48 +74,6 @@ class ProductScreen extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class ProductForm extends StatelessWidget {
-  final Product? product;
-  final Function(Product) onSubmit;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController priceController = TextEditingController();
-
-  ProductForm({this.product, required this.onSubmit}) {
-    if (product != null) {
-      nameController.text = product!.name;
-      priceController.text = product!.price.toString();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Name'),
-        ),
-        TextField(
-          controller: priceController,
-          decoration: InputDecoration(labelText: 'Price'),
-          keyboardType: TextInputType.number,
-        ),
-        ElevatedButton(
-          child: Text(product == null ? 'Add' : 'Update'),
-          onPressed: () {
-            final newProduct = Product(
-              id: product?.id ?? 0,
-              name: nameController.text,
-              price: double.parse(priceController.text),
-            );
-            onSubmit(newProduct);
-          },
-        ),
-      ],
     );
   }
 }
