@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
 import 'product_form.dart';
 import 'package:get/get.dart';
 import 'product_controller.dart';
